@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
-type Link = {
+type LinkData = {
   id: number;
   title: string;
   url: string;
@@ -10,7 +11,9 @@ type Link = {
 type Profile = {
   id: string;
   username: string;
-  links: Link[];
+  full_name: string | null;
+  avatar_url: string | null;
+  links: LinkData[];
 };
 
 async function getProfileData(username: string): Promise<Profile | null> {
@@ -18,7 +21,7 @@ async function getProfileData(username: string): Promise<Profile | null> {
   
   const { data: profileData, error: profileError } = await supabase
     .from('profiles')
-    .select('id, username')
+    .select('id, username, full_name, avatar_url')
     .ilike('username', username)
     .single();
 
@@ -26,17 +29,12 @@ async function getProfileData(username: string): Promise<Profile | null> {
     return null;
   }
 
-  const { data: linksData, error: linksError } = await supabase
+  const { data: linksData } = await supabase
     .from('links')
     .select('id, title, url')
     .eq('user_id', profileData.id)
     .order('id', { ascending: true });
   
-  if (linksError) {
-    console.error("Error fetching links:", linksError);
-    return { ...profileData, links: [] };
-  }
-
   return { ...profileData, links: linksData || [] };
 }
 
@@ -48,18 +46,23 @@ export default async function PublicProfilePage({ params }: { params: { username
   }
 
   return (
-    <main className="min-h-screen w-full flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md mx-auto">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 font-display">
+      <main className="w-full max-w-md mx-auto">
         <div className="flex flex-col items-center text-center space-y-4 mb-8">
-          <div className="w-28 h-28 rounded-full bg-gray-700 flex items-center justify-center">
-            <span className="text-4xl font-bold text-gray-400">
-              {profile.username.charAt(0).toUpperCase()}
-            </span>
+          <div className="relative">
+            <img
+              src={profile.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${profile.username}`}
+              alt={profile.full_name || profile.username}
+              className="w-28 h-28 rounded-full object-cover bg-gray-700"
+            />
+            <div className="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full border-4 border-[#0f1723]"></div>
           </div>
           <div className="flex flex-col items-center">
-            <h1 className="text-2xl font-bold text-white">@{profile.username}</h1>
+            <h1 className="text-2xl font-bold text-white">{profile.full_name || profile.username}</h1>
+            <p className="text-base text-slate-400">@{profile.username}</p>
           </div>
         </div>
+
         <div className="flex flex-col space-y-4">
           {profile.links.map((link, index) => (
             <a
@@ -68,14 +71,20 @@ export default async function PublicProfilePage({ params }: { params: { username
               target="_blank"
               rel="noopener noreferrer"
               className={`w-full text-white text-center font-bold py-4 px-6 rounded-lg transition-transform transform hover:-translate-y-1 hover:shadow-xl ${
-                index === 0 ? 'bg-[--color-primary]' : 'bg-[--color-slate-button] hover:bg-[--color-slate-button-hover]'
+                index === 0 ? 'bg-primary' : 'bg-slate-800 hover:bg-slate-700'
               }`}
             >
               <span className="truncate">{link.title}</span>
             </a>
           ))}
         </div>
-      </div>
-    </main>
+      </main>
+
+      <footer className="absolute bottom-6 text-center">
+        <Link href="/" className="text-lg font-bold text-white hover:text-primary transition-colors">
+          LinkHub
+        </Link>
+      </footer>
+    </div>
   );
 }

@@ -69,9 +69,9 @@ export default function LoginPage() {
           <div className="flex border-b border-gray-700">
             <button
               onClick={() => setIsSignUp(false)}
-              className={`flex-1 border-b-2 py-3 text-sm font-bold focus:outline-none transition-colors duration-200 ${
+              className={`flex-1 border-b-3 py-3 text-sm font-bold focus:outline-none transition-colors duration-200 ${
                 !isSignUp
-                  ? 'border-[--color-primary] text-[--color-primary]'
+                  ? 'border-primary text-primary'
                   : 'border-transparent text-gray-400 hover:border-gray-600'
               }`}
             >
@@ -79,9 +79,9 @@ export default function LoginPage() {
             </button>
             <button
               onClick={() => setIsSignUp(true)}
-              className={`flex-1 border-b-2 py-3 text-sm font-bold focus:outline-none transition-colors duration-200 ${
+              className={`flex-1 border-b-3 py-3 text-sm font-bold focus:outline-none transition-colors duration-200 ${
                 isSignUp
-                  ? 'border-[--color-primary] text-[--color-primary]'
+                  ? 'border-primary text-primary'
                   : 'border-transparent text-gray-400 hover:border-gray-600'
               }`}
             >
@@ -98,7 +98,7 @@ export default function LoginPage() {
                 <input
                   id="username" name="username" type="text"
                   value={username} onChange={(e) => setUsername(e.target.value)} required
-                  className="relative block w-full appearance-none rounded-lg border border-gray-700 bg-[--color-background-dark] px-4 py-3 text-white placeholder-gray-400 focus:z-10 focus:border-[--color-primary] focus:outline-none focus:ring-[--color-primary] sm:text-sm"
+                  className="relative block w-full appearance-none rounded-lg border border-gray-700 bg-background-dark px-4 py-3 text-white placeholder-gray-400 focus:z-10 focus:border-[--color-primary] focus:outline-none focus:ring-[--color-primary] sm:text-sm"
                   placeholder="Username"
                 />
               </div>
@@ -108,7 +108,7 @@ export default function LoginPage() {
               <input
                 id="email" name="email" type="email" autoComplete="email"
                 value={email} onChange={(e) => setEmail(e.target.value)} required
-                className="relative block w-full appearance-none rounded-lg border border-gray-700 bg-[--color-background-dark] px-4 py-3 text-white placeholder-gray-400 focus:z-10 focus:border-[--color-primary] focus:outline-none focus:ring-[--color-primary] sm:text-sm"
+                className="relative block w-full appearance-none rounded-lg border border-gray-700 bg-background-dark px-4 py-3 text-white placeholder-gray-400 focus:z-10 focus:border-[--color-primary] focus:outline-none focus:ring-[--color-primary] sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -118,7 +118,7 @@ export default function LoginPage() {
                 id="password" name="password" type="password"
                 autoComplete={isSignUp ? "new-password" : "current-password"}
                 value={password} onChange={(e) => setPassword(e.target.value)} required
-                className="relative block w-full appearance-none rounded-lg border border-gray-700 bg-[--color-background-dark] px-4 py-3 text-white placeholder-gray-400 focus:z-10 focus:border-[--color-primary] focus:outline-none focus:ring-[--color-primary] sm:text-sm"
+                className="relative block w-full appearance-none rounded-lg border border-gray-700 bg-background-dark px-4 py-3 text-white placeholder-gray-400 focus:z-10 focus:border-[--color-primary] focus:outline-none focus:ring-[--color-primary] sm:text-sm"
                 placeholder="Password"
               />
             </div>
@@ -126,7 +126,7 @@ export default function LoginPage() {
           <div>
             <button
               type="submit" disabled={isLoading}
-              className="group relative flex w-full justify-center rounded-lg border border-transparent bg-[--color-primary] py-3 px-4 text-sm font-bold text-white hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-opacity-50"
+              className="group relative flex w-full justify-center rounded-lg border border-transparent bg-primary py-3 px-4 text-sm font-bold text-white hover:bg-opacity-90 hover:scale-105 duration-300 focus:outline-none focus:ring-2 focus:ring-[--color-primary] focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-opacity-50"
             >
               {isLoading ? 'Processing...' : (isSignUp ? 'Sign Up' : 'Sign In')}
             </button>

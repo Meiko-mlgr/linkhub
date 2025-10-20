@@ -2,23 +2,114 @@
 @import "tailwindcss";
 
 body {
-  background-color: #101722;
+background-color: #0f1723;
   color: #e2e8f0;
   font-family: "Manrope", sans-serif;
 }
 
+.bg-background-dark {
+  background-color: #101722;
+}
+
 .bg-primary {
-  background-color: #0d6cf2;
+  background-color: #0667f9;
 }
 .hover-text-primary:hover {
-  color: #0d6cf2;
+  color: #0667f9;
 }
 .text-primary {
-  color: #0d6cf2;
+  color: #0667f9;
 }
 .border-primary {
-  border-color: #0d6cf2;
+  border-color: #0667f9;
 }
 .bg-primary-light {
-  background-color: rgba(13, 108, 242, 0.1);
+  background-color: rgba(6, 103, 249, 0.1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.3s ease-in-out forwards;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown-fade-in {
+  animation: dropdownFadeIn 0.2s ease-out forwards;
+}
+
+.custom-file-input::file-selector-button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0667f9;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-color: transparent;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-file-input::file-selector-button:hover {
+  background-color: rgba(6, 103, 249, 0.9);
+}
+
+.custom-file-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: #0667f9;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-file-label:hover {
+  background-color: rgba(6, 103, 249, 0.9);
+}
+
+.file-name-display {
+  flex-grow: 1;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
