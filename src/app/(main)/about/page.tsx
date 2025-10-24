@@ -24,8 +24,8 @@ export default function AboutPage() {
             </div>
             <nav className="hidden md:flex items-center gap-8">
               <Link href="/" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Home</Link>
-              <a href="#" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Features</a>
-              <a href="#" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Pricing</a>
+              <Link href="/features" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Features</Link>
+              <Link href="/pricing" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Pricing</Link>
               <span className="text-sm font-medium text-primary">About</span>
             </nav>
             <div className="flex items-center gap-2">

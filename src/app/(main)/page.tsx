@@ -23,9 +23,9 @@ export default function LandingPage() {
                 <h2 className="text-2xl font-bold text-white">LinkHub</h2>
               </div>
               <nav className="hidden items-center gap-8 md:flex">
-                <a className="text-sm font-medium text-slate-300 hover-text-primary" href="#">Features</a>
-                <a className="text-sm font-medium text-slate-300 hover-text-primary" href="#">Pricing</a>
-                <Link href="/about" className="text-sm font-medium text-slate-300 hover-text-primary">About</Link>
+                <Link href="/features" className="text-sm font-medium text-slate-300 duration-300 hover-text-primary">Features</Link>
+                <Link href="/pricing" className="text-sm font-medium text-slate-300 duration-300 hover-text-primary">Pricing</Link>
+                <Link href="/about" className="text-sm font-medium text-slate-300 duration-300 hover-text-primary">About</Link>
               </nav>
               <div className="flex items-center gap-4">
                 <button onClick={handleGetStarted} className="hidden text-sm font-medium text-slate-300 hover-text-primary sm:block">
@@ -143,7 +143,7 @@ const PricingCard = ({ title, description, price, features, onGetStarted, isPopu
       <span className="text-4xl font-extrabold text-white">{price}</span>
       <span className="ml-1 font-medium text-slate-400">/month</span>
     </div>
-    <button onClick={onGetStarted} className={`mt-6 flex h-10 w-full items-center justify-center rounded-full px-6 text-sm font-bold ${isPopular ? 'bg-primary text-white transition-transform hover:scale-105' : 'bg-slate-800 text-slate-200 hover:bg-slate-700'}`}>
+    <button onClick={onGetStarted} className={`mt-6 flex h-10 w-full items-center justify-center rounded-full px-6 text-sm font-bold ${isPopular ? 'bg-primary text-white transition-transform hover:scale-105' : 'bg-slate-800 text-slate-200 duration-300 hover:bg-slate-700'}`}>
       Get Started
     </button>
     <ul className="mt-8 space-y-4 text-sm text-slate-400">

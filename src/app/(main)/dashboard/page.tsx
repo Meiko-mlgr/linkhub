@@ -281,7 +281,7 @@ export default function DashboardPage() {
               <p className="text-gray-400">Your LinkHub is live and ready to be shared with the world.</p>
             </div>
             <div className="relative">
-              <input className="form-input w-full rounded-lg border-gray-700/50 bg-gray-800/30 py-3 pl-4 pr-12 text-sm text-white" readOnly type="text" value={`linkhub.app/${profile?.username || '...'}`} />
+              <input className="form-input w-full rounded-lg border-gray-700/50 bg-gray-800/30 py-3 pl-4 pr-12 text-sm text-white" readOnly type="text" value={`LinkHub.netlify.app/${profile?.username || '...'}`} />
               <button onClick={() => navigator.clipboard.writeText(`linkhub.app/${profile?.username || ''}`)} className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-primary transition-colors">
                 <Copy size={20} />
               </button>
