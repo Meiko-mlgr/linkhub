@@ -1,8 +1,8 @@
-// src/app/page.tsx
 'use client';
 
 import { useRouter } from 'next/navigation';
 import { Check, Link as LinkIcon, Palette, BarChart2 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -19,16 +19,16 @@ export default function LandingPage() {
             <div className="flex h-20 items-center justify-between">
               <div className="flex items-center gap-3">
                 <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                  <path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+                  <path clipRule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fillRule="evenodd"></path></svg>
                 <h2 className="text-2xl font-bold text-white">LinkHub</h2>
               </div>
               <nav className="hidden items-center gap-8 md:flex">
-                <a className="text-sm font-medium text-slate-300 duration-250 hover-text-primary" href="#">Features</a>
-                <a className="text-sm font-medium text-slate-300 duration-250 hover-text-primary" href="#">Pricing</a>
-                <a className="text-sm font-medium text-slate-300 duration-250 hover-text-primary" href="#">Resources</a>
+                <Link href="/features" className="text-sm font-medium text-slate-300 duration-300 hover-text-primary">Features</Link>
+                <Link href="/pricing" className="text-sm font-medium text-slate-300 duration-300 hover-text-primary">Pricing</Link>
+                <Link href="/about" className="text-sm font-medium text-slate-300 duration-300 hover-text-primary">About</Link>
               </nav>
               <div className="flex items-center gap-4">
-                <button onClick={handleGetStarted} className="hidden text-sm font-medium text-slate-300 duration-250 hover-text-primary sm:block">
+                <button onClick={handleGetStarted} className="hidden text-sm font-medium text-slate-300 hover-text-primary sm:block">
                   Log In
                 </button>
                 <button onClick={handleGetStarted} className="flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-bold text-white transition-transform hover:scale-105">
@@ -131,7 +131,7 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, titl
 );
 
 const PricingCard = ({ title, description, price, features, onGetStarted, isPopular }: any) => (
-  <div className={`relative flex flex-col rounded-xl border ${isPopular ? 'border-2 border-primary' : 'border-slate-800'} background-color p-8`}>
+  <div className={`relative flex flex-col rounded-xl border ${isPopular ? 'border-2 border-primary' : 'border-slate-800'} bg-[#101722] p-8`}>
     {isPopular && (
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 transform">
         <div className="rounded-full bg-primary px-4 py-1 text-xs font-bold uppercase text-white">Most Popular</div>
@@ -143,7 +143,7 @@ const PricingCard = ({ title, description, price, features, onGetStarted, isPopu
       <span className="text-4xl font-extrabold text-white">{price}</span>
       <span className="ml-1 font-medium text-slate-400">/month</span>
     </div>
-    <button onClick={onGetStarted} className={`mt-6 flex h-10 w-full items-center justify-center rounded-full px-6 text-sm font-bold ${isPopular ? 'bg-primary text-white transition-transform hover:scale-105' : 'bg-slate-800 text-slate-200 transition-transform hover:scale-105 hover:bg-slate-700'}`}>
+    <button onClick={onGetStarted} className={`mt-6 flex h-10 w-full items-center justify-center rounded-full px-6 text-sm font-bold ${isPopular ? 'bg-primary text-white transition-transform hover:scale-105' : 'bg-slate-800 text-slate-200 duration-300 hover:bg-slate-700'}`}>
       Get Started
     </button>
     <ul className="mt-8 space-y-4 text-sm text-slate-400">
