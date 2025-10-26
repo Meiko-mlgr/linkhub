@@ -18,8 +18,8 @@ export default function FeaturesPage() {
             </div>
             <nav className="hidden md:flex items-center gap-8">
               <Link href="/" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Home</Link>
-              <span className="text-sm font-medium text-primary">Features</span> {/* Highlight current page */}
-              <Link href="/pricing" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Pricing</Link> {/* Assuming you might add a pricing page */}
+              <span className="text-sm font-medium text-primary">Features</span>
+              <Link href="/pricing" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">Pricing</Link>
               <Link href="/about" className="text-sm font-medium text-slate-300 hover:text-primary transition-colors">About</Link>
             </nav>
             <div className="flex items-center gap-2">
@@ -30,18 +30,14 @@ export default function FeaturesPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="max-w-4xl mx-auto">
-          {/* Page Title */}
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">LinkHub Features</h2>
             <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">Everything you need to connect your audience to your content, all in one place.</p>
           </div>
 
-          {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Feature Item 1 */}
             <div className="flex items-start gap-4 p-6 bg-slate-900/50 border border-slate-800 rounded-xl">
               <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary-light text-primary rounded-lg">
                 <LinkIcon className="w-6 h-6" />
@@ -52,7 +48,6 @@ export default function FeaturesPage() {
               </div>
             </div>
 
-            {/* Feature Item 2 */}
             <div className="flex items-start gap-4 p-6 bg-slate-900/50 border border-slate-800 rounded-xl">
               <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary-light text-primary rounded-lg">
                 <Palette className="w-6 h-6" />
@@ -63,7 +58,6 @@ export default function FeaturesPage() {
               </div>
             </div>
 
-            {/* Feature Item 3 */}
             <div className="flex items-start gap-4 p-6 bg-slate-900/50 border border-slate-800 rounded-xl">
               <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary-light text-primary rounded-lg">
                 <BarChart2 className="w-6 h-6" />
@@ -74,7 +68,7 @@ export default function FeaturesPage() {
               </div>
             </div>
 
-            {/* Feature Item 4 */}
+
             <div className="flex items-start gap-4 p-6 bg-slate-900/50 border border-slate-800 rounded-xl">
               <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary-light text-primary rounded-lg">
                 <Globe className="w-6 h-6" />
@@ -96,7 +90,7 @@ export default function FeaturesPage() {
                   Upgrade to LinkHub Pro for advanced customization (themes, fonts), link scheduling, detailed analytics, custom domains, and priority support.
                 </p>
               </div>
-              <Link href="/login" className="flex-shrink-0 px-6 py-3 text-sm font-bold bg-primary text-white rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
+              <Link href="/pricing" className="flex-shrink-0 px-6 py-3 text-sm font-bold bg-primary text-white rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
                 Go Pro
               </Link>
             </div>
