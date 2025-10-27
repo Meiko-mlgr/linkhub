@@ -332,11 +332,11 @@ export default function DashboardPage() {
               <p className="text-gray-400">Your LinkHub is live and ready to be shared with the world.</p>
             </div>
             <div className="relative">
-              <input className="form-input w-full rounded-lg border-gray-700/50 bg-gray-800/30 py-3 pl-4 pr-12 text-sm text-white" readOnly type="text" value={`LinkHub.netlify.app/${profile?.username || '...'}`} />
+              <input className="form-input w-full rounded-lg border-gray-700/50 bg-gray-800/30 py-3 pl-4 pr-12 text-sm text-white" readOnly type="text" value={`link-hubo.netlify.app/${profile?.username || '...'}`} />
               <button onClick={() => {
                   try {
                     const input = document.createElement('textarea');
-                    input.value = `LinkHub.netlify.app/${profile?.username || ''}`;
+                    input.value = `link-hubo.netlify.app/${profile?.username || ''}`;
                     document.body.appendChild(input);
                     input.select();
                     document.execCommand('copy');
