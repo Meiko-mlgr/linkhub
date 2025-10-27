@@ -40,13 +40,13 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">About LinkHub</h2>
-            <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">A minimalist and elegant "link-in-bio" service for content creators, professionals, and brands.</p>
+            <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">A minimalist and elegant &quot;link-in-bio&quot; service for content creators, professionals, and brands.</p> {/* Fixed quotes */}
           </div>
           <div className="space-y-12">
             <div className="p-8 bg-slate-900/50 border border-slate-800 rounded-xl">
               <h3 className="text-2xl font-bold text-white mb-4">Why I Built This</h3>
               <p className="text-slate-400 leading-relaxed">
-                LinkHub started as a personal challenge: could I build a complete SaaS application from scratch to really solidify my full-stack skills? I wanted to create a practical tool, similar to services I've seen, that covers everything from users signing up and managing their data to having a live, interactive front-end. Think of it as a hands-on way for me to demonstrate the kind of web applications I enjoy building.
+                LinkHub started as a personal challenge: could I build a complete SaaS application from scratch to really solidify my full-stack skills? I wanted to create a practical tool, similar to services I&apos;ve seen, that covers everything from users signing up and managing their data to having a live, interactive front-end. Think of it as a hands-on way for me to demonstrate the kind of web applications I enjoy building. {/* Fixed apostrophe */}
               </p>
             </div>
             
@@ -58,19 +58,19 @@ export default function AboutPage() {
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <CheckIcon />
-                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">Next.js:</strong> A powerful React framework for building fast, server-rendered applications with the App Router.</span>
+                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">Next.js (App Router):</strong> Great for building the user interface quickly and handling both the front-end and back-end parts smoothly.</span>
                 </li>
                 <li className="flex items-start">
                   <CheckIcon />
-                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">TypeScript:</strong> For adding static types to JavaScript, which helps catch errors early and improves code quality.</span>
+                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">TypeScript:</strong> Helps catch typos and other small errors in the code early on, which saves a lot of time.</span>
                 </li>
                 <li className="flex items-start">
                   <CheckIcon />
-                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">Tailwind CSS:</strong> A utility-first CSS framework for rapid, custom UI development without writing traditional CSS.</span>
+                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">Tailwind CSS:</strong> Allows for styling directly in the HTML structure, making it fast to create custom designs like this one.</span>
                 </li>
                 <li className="flex items-start">
                   <CheckIcon />
-                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">Supabase:</strong> An open-source Firebase alternative providing a Postgres database, authentication, file storage, and auto-generated APIs.</span>
+                  <span className="text-slate-300"><strong className="font-semibold text-slate-200">Supabase:</strong> Handles all the backend heavy lifting like user accounts, the database for storing links, and even file uploads for profile pictures.</span>
                 </li>
               </ul>
             </div>
@@ -78,7 +78,7 @@ export default function AboutPage() {
             <div className="p-8 bg-slate-900/50 border border-primary/20 rounded-xl">
               <h3 className="text-2xl font-bold text-white mb-4">About Me</h3>
               <p className="text-slate-300 leading-relaxed">
-                Hi, I'm Mikko, currently studying Computer Engineering but really diving deep into the world of software development. I'm particularly excited about creating interactive and engaging web experiences, like the 3D social app mentioned in my projects. Building LinkHub was a fantastic way for me to put my skills in full-stack development (especially with tools like Next.js, Supabase, and even some fun visualization libraries) into practice and show what I can build from concept to completion. I really enjoy the process of bringing ideas to life through code and am always looking for the next interesting challenge.
+                Hi, I&apos;m Mikko, currently studying Computer Engineering but really diving deep into the world of software development. I&apos;m particularly excited about creating interactive and engaging web experiences, like the 3D social app mentioned in my projects. Building LinkHub was a fantastic way for me to put my skills in full-stack development (especially with tools like Next.js, Supabase, and even some fun visualization libraries) into practice and show what I can build from concept to completion. I really enjoy the process of bringing ideas to life through code and am always looking for the next interesting challenge. {/* Fixed apostrophes */}
               </p>
             </div>
           </div>

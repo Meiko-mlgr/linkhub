@@ -31,9 +31,16 @@ export default function LoginPage() {
       alert('Success! Please check your email for a verification link.');
       router.push('/dashboard');
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error during sign up:', error);
-      alert(error.error_description || error.message);
+      if (error && typeof error === 'object' && ('message' in error)) {
+        const supabaseError = error as { error_description?: string, message: string };
+        alert(supabaseError.error_description || supabaseError.message);
+      } else if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert('An unknown error occurred.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -49,9 +56,16 @@ export default function LoginPage() {
       });
       if (error) throw error;
       router.push('/dashboard');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error during sign in:', error);
-      alert(error.error_description || error.message);
+      if (error && typeof error === 'object' && ('message' in error)) {
+        const supabaseError = error as { error_description?: string, message: string };
+        alert(supabaseError.error_description || supabaseError.message);
+      } else if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert('An unknown error occurred.');
+      }
     } finally {
       setIsLoading(false);
     }

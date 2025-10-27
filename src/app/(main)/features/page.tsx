@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import { Link as LinkIcon, Palette, BarChart2, Star, Globe, Clock, Lock } from 'lucide-react'; // Added relevant icons
+import { Link as LinkIcon, Palette, BarChart2, Star, Globe } from 'lucide-react';
 
 export default function FeaturesPage() {
   return (
     <div className="flex flex-col min-h-screen font-display text-slate-200">
-      {/* Header */}
       <header className="sticky top-0 z-10 bg-background-dark/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 border-b border-slate-800">

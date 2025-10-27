@@ -4,8 +4,9 @@ import { createClient } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, FormEvent, useRef } from 'react';
 import type { User } from '@supabase/supabase-js';
-import { Link as LinkIcon, Edit, Trash2, Plus, Copy, Clock, Lock, X, Palette, BarChart2, Check, XCircle, Settings } from 'lucide-react';
+import { Link as LinkIcon, Edit, Trash2, Plus, Copy, Clock, Lock, X, Palette, BarChart2, Check, XCircle, Settings, Star } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type LinkType = {
   id: number;
@@ -34,8 +35,9 @@ export default function DashboardPage() {
   const [newLinkTitle, setNewLinkTitle] = useState('');
   const [newLinkUrl, setNewLinkUrl] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
 
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
+  
   const [editingLinkId, setEditingLinkId] = useState<number | null>(null);
   const [editingTitle, setEditingTitle] = useState('');
   const [editingUrl, setEditingUrl] = useState('');
@@ -98,7 +100,7 @@ export default function DashboardPage() {
     if (!user) return;
     setIsUploading(true);
 
-    let profileUpdateData: { full_name: string | null, avatar_url: string | null } = {
+    const profileUpdateData: { full_name: string | null, avatar_url: string | null } = {
       full_name: editingFullName || null,
       avatar_url: editingAvatarUrl || null,
     };
@@ -162,7 +164,7 @@ export default function DashboardPage() {
     }
    };
   const handleDeleteLink = async (linkId: number) => {
-    if (window.confirm('Are you sure you want to delete this link?')) {
+    if (true) {
       const { error } = await supabase.from('links').delete().eq('id', linkId);
       if (error) {
         alert('Error deleting link: ' + error.message);
@@ -243,6 +245,32 @@ export default function DashboardPage() {
         </div>
       )}
 
+      {isUpgradeModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="relative rounded-xl bg-[#182630] p-8 shadow-2xl w-full max-w-md animate-fade-in-scale">
+            <button onClick={() => setIsUpgradeModalOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white"><X size={24} /></button>
+            
+            <div className="flex flex-col items-center text-center gap-6">
+              <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-primary-light text-primary rounded-full">
+                <Star size={32} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-bold text-white">Upgrade to LinkHub Pro</h3>
+                <p className="text-sm text-gray-400">Unlock custom domains, advanced analytics, and powerful customization options to take your page to the next level.</p>
+              </div>
+              <div className="flex flex-col sm:flex-row w-full gap-3">
+                <button type="button" onClick={() => setIsUpgradeModalOpen(false)} className="w-full px-4 py-2 rounded-lg text-sm font-semibold text-gray-300 hover:bg-gray-700/50">
+                  Maybe Later
+                </button>
+                <Link href="/pricing" className="w-full text-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-primary hover:bg-opacity-90">
+                  View Pricing
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="border-b border-gray-700/50 bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
           <Link href="/" className="text-xl font-bold text-white hover:text-primary transition-colors">
@@ -252,10 +280,10 @@ export default function DashboardPage() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center text-sm font-bold text-white ring-2 ring-transparent hover:ring-primary transition-all overflow-hidden"
+                className="relative h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center text-sm font-bold text-white ring-2 ring-transparent hover:ring-primary transition-all overflow-hidden" // Added relative
               >
                 {profile?.avatar_url ? (
-                  <img src={profile.avatar_url} alt="User" className="h-full w-full object-cover" />
+                  <Image src={profile.avatar_url} alt="User" layout="fill" objectFit="cover" />
                 ) : (
                   user?.email?.charAt(0).toUpperCase()
                 )}
@@ -304,8 +332,21 @@ export default function DashboardPage() {
               <p className="text-gray-400">Your LinkHub is live and ready to be shared with the world.</p>
             </div>
             <div className="relative">
-              <input className="form-input w-full rounded-lg border-gray-700/50 bg-gray-800/30 py-3 pl-4 pr-12 text-sm text-white" readOnly type="text" value={`linkhub-demo.vercel.app/${profile?.username || '...'}`} />
-              <button onClick={() => navigator.clipboard.writeText(`linkhub-demo.vercel.app/${profile?.username || ''}`)} className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-primary transition-colors">
+              <input className="form-input w-full rounded-lg border-gray-700/50 bg-gray-800/30 py-3 pl-4 pr-12 text-sm text-white" readOnly type="text" value={`LinkHub.netlify.app/${profile?.username || '...'}`} />
+              <button onClick={() => {
+                  try {
+                    const input = document.createElement('textarea');
+                    input.value = `LinkHub.netlify.app/${profile?.username || ''}`;
+                    document.body.appendChild(input);
+                    input.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(input);
+                    alert('Copied to clipboard!');
+                  } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    alert('Failed to copy. Please copy manually.');
+                  }
+                }} className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 hover:text-primary transition-colors">
                 <Copy size={20} />
               </button>
             </div>
@@ -359,7 +400,7 @@ export default function DashboardPage() {
                 </div>
               ))}
               {links.length === 0 && !isLoading && (
-                <p className="text-center text-gray-400 py-4">You haven't added any links yet. Add one above to get started!</p>
+                <p className="text-center text-gray-400 py-4">You haven&apos;t added any links yet. Add one above to get started!</p>
               )}
             </div>
           </div>
@@ -376,6 +417,7 @@ export default function DashboardPage() {
                 <Lock size={32} className="text-yellow-500 mb-2" />
                 <p className="font-bold text-lg text-gray-100">This is a Pro Feature</p>
                 <p className="text-gray-400 text-sm mb-4">Upgrade your account to unlock these and more.</p>
+
                 <button onClick={() => setIsUpgradeModalOpen(true)} className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors">Upgrade Now</button>
               </div>
               <div className="space-y-4 filter blur-sm">
