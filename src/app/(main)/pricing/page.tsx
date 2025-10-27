@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, BarChart2, Home, Check } from 'lucide-react'; // Added relevant icons
+import { Mail, BarChart2, Home } from 'lucide-react';
 
-// Helper component for the checkmark icon
 const CheckIcon = () => (
     <svg className="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path clipRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.052-.143Z" fillRule="evenodd"></path>
@@ -86,12 +85,10 @@ export default function PricingPage() {
                             <h3 className="text-2xl font-bold text-white">Pricing</h3>
                             <div className="mt-6 space-y-8">
                                 <div className="flex flex-col sm:flex-row gap-4">
-                                    {/* Monthly Option */}
                                     <div className="flex-1 border-2 border-slate-700 rounded-lg p-6 text-center hover:border-primary transition-colors">
                                         <h4 className="text-lg font-semibold text-slate-200">Monthly</h4>
                                         <p className="mt-2 text-4xl font-extrabold text-white">$9<span className="text-base font-medium text-slate-400">/mo</span></p>
                                     </div>
-                                    {/* Annual Option */}
                                     <div className="flex-1 border-2 border-primary rounded-lg p-6 text-center relative">
                                         <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Most Popular</div>
                                         <h4 className="text-lg font-semibold text-slate-200">Annual</h4>

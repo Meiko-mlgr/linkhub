@@ -4,12 +4,18 @@ import { useRouter } from 'next/navigation';
 import { Check, Link as LinkIcon, Palette, BarChart2 } from 'lucide-react';
 import Link from 'next/link';
 
+type PricingCardProps = {
+  title: string;
+  description: string;
+  price: string;
+  features: string[];
+  onGetStarted: () => void;
+  isPopular: boolean;
+};
+
 export default function LandingPage() {
   const router = useRouter();
-
-  const handleGetStarted = () => {
-    router.push('/login');
-  };
+  const handleGetStarted = () => router.push('/login');
 
   return (
     <div className="font-display text-slate-200">
@@ -130,7 +136,8 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode, titl
   </div>
 );
 
-const PricingCard = ({ title, description, price, features, onGetStarted, isPopular }: any) => (
+// Use the defined props type
+const PricingCard = ({ title, description, price, features, onGetStarted, isPopular }: PricingCardProps) => (
   <div className={`relative flex flex-col rounded-xl border ${isPopular ? 'border-2 border-primary' : 'border-slate-800'} bg-[#101722] p-8`}>
     {isPopular && (
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 transform">

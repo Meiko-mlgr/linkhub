@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type LinkData = {
   id: number;
@@ -15,6 +16,8 @@ type Profile = {
   avatar_url: string | null;
   links: LinkData[];
 };
+
+export const revalidate = 3600;
 
 async function getProfileData(username: string): Promise<Profile | null> {
   const supabase = createClient();
@@ -38,8 +41,13 @@ async function getProfileData(username: string): Promise<Profile | null> {
   return { ...profileData, links: linksData || [] };
 }
 
-export default async function PublicProfilePage({ params }: { params: { username: string } }) {
-  const profile = await getProfileData(params.username);
+export default async function PublicProfilePage({
+  params,
+}: {
+  params: { user: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const profile = await getProfileData(params.user);
 
   if (!profile) {
     notFound();
@@ -50,12 +58,14 @@ export default async function PublicProfilePage({ params }: { params: { username
       <main className="w-full max-w-md mx-auto">
         <div className="flex flex-col items-center text-center space-y-4 mb-8">
           <div className="relative">
-            <img
-              src={profile.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${profile.username}`}
+            <Image
+              src={profile.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${profile.username}&backgroundColor=0d69f2`}
               alt={profile.full_name || profile.username}
-              className="w-28 h-28 rounded-full object-cover bg-gray-700"
+              width={112} 
+              height={112}
+              className="rounded-full object-cover bg-gray-700 border-2 border-gray-600"
+              priority
             />
-            <div className="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full border-4 border-[#0f1723]"></div>
           </div>
           <div className="flex flex-col items-center">
             <h1 className="text-2xl font-bold text-white">{profile.full_name || profile.username}</h1>

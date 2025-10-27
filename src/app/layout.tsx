@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "LinkHub",
   description: "All your links in one place.",
+  icons: {
+    icon: '/logo.svg',
+  },
 };
 
 export default function RootLayout({
