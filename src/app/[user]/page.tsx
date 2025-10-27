@@ -43,12 +43,13 @@ async function getProfileData(username: string): Promise<Profile | null> {
 
 export default async function PublicProfilePage({
   params,
+  searchParams,
 }: {
   params: { user: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const profile = await getProfileData(params.user);
-
+  const resolvedParams = await params;
+  const profile = await getProfileData(resolvedParams.user);
   if (!profile) {
     notFound();
   }
@@ -61,8 +62,8 @@ export default async function PublicProfilePage({
             <Image
               src={profile.avatar_url || `https://api.dicebear.com/8.x/initials/svg?seed=${profile.username}&backgroundColor=0d69f2`}
               alt={profile.full_name || profile.username}
-              width={112} 
-              height={112}
+              width={130} 
+              height={130}
               className="rounded-full object-cover bg-gray-700 border-2 border-gray-600"
               priority
             />
